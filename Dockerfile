@@ -1,4 +1,4 @@
-FROM debian:9.6-slim
+FROM alpine:latest
 
 LABEL "com.github.actions.name"="Auto-approve pull requests only once"
 LABEL "com.github.actions.description"="Auto-approve pull requests only once"
@@ -10,9 +10,7 @@ LABEL repository="http://github.com/afewyards/auto-approve-once-action"
 LABEL homepage="http://github.com/afewyards/auto-approve-once-action"
 LABEL maintainer="Thierry Kleist <thierry@kle.ist>"
 
-RUN apt-get update && apt-get install -y \
-    curl \
-    jq
+RUN apk --no-cache add jq bash curl git
 
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

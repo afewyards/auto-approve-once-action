@@ -2,7 +2,7 @@
 
 set -e
 
-PR_NUMBER=$(jq -r ".issue.number" "$GITHUB_EVENT_PATH")
+PR_NUMBER=$(jq -r ".pull_request.number" "$GITHUB_EVENT_PATH")
 REPO_FULLNAME=$(jq -r ".repository.full_name" "$GITHUB_EVENT_PATH")
 
 echo "Collecting information about PR #$PR_NUMBER of $REPO_FULLNAME..."
